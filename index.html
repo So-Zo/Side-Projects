@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typography Toolkit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Initial Hubot Sans font -->
+    <link href="https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">TYPOGRAPHY TOOLKIT</div>
+      <nav class="tools-nav">
+        <button class="nav-btn active" data-tool="font-pair">Font Pairing</button>
+        <button class="nav-btn" data-tool="typography-tools">Typography Controls</button>
+        <button class="nav-btn" data-tool="typography-info">Typography Tips</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Tool 1: Font Pairing -->
+      <section id="font-pair" class="tool-section active">
+        <h2 class="section-title">Font Pairing</h2>
+        <div class="info-tip">
+          <p>Good font pairing creates harmony and establishes visual hierarchy. Typically, pair a distinctive heading font with a highly readable body font.</p>
+        </div>
+        
+        <div class="controls">
+          <div class="font-control">
+            <div class="font-name">Heading Font</div>
+            <div class="font-display">
+              <div class="heading-font" id="heading-font-display">Hubot Sans</div>
+              <button
+                class="shuffle-btn"
+                id="shuffle-heading"
+                title="Shuffle heading font"
+              >
+                ⟳
+              </button>
+            </div>
+            <div class="dropdown">
+              <select id="heading-font-select" class="dropdown-select">
+                <!-- Font options will be populated by JavaScript -->
+              </select>
+            </div>
+            <div class="font-category" id="heading-categories">
+              <button class="category-btn active" data-category="all">All</button>
+              <button class="category-btn" data-category="serif">Serif</button>
+              <button class="category-btn" data-category="sans-serif">
+                Sans
+              </button>
+              <button class="category-btn" data-category="display">
+                Display
+              </button>
+            </div>
+          </div>
+
+          <div class="font-control">
+            <div class="font-name">Body Font</div>
+            <div class="font-display">
+              <div class="body-font" id="body-font-display">Hubot Sans</div>
+              <button
+                class="shuffle-btn"
+                id="shuffle-body"
+                title="Shuffle body font"
+              >
+                ⟳
+              </button>
+            </div>
+            <div class="dropdown">
+              <select id="body-font-select" class="dropdown-select">
+                <!-- Font options will be populated by JavaScript -->
+              </select>
+            </div>
+            <div class="font-category" id="body-categories">
+              <button class="category-btn active" data-category="all">All</button>
+              <button class="category-btn" data-category="serif">Serif</button>
+              <button class="category-btn" data-category="sans-serif">
+                Sans
+              </button>
+              <button class="category-btn" data-category="display">
+                Display
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button class="shuffle-all" id="shuffle-all">SHUFFLE BOTH</button>
+      </section>
+
+      <!-- Tool 2: Typography Controls -->
+      <section id="typography-tools" class="tool-section">
+        <h2 class="section-title">Typography Controls</h2>
+        <div class="info-tip">
+          <p>Fine-tune your typography settings to enhance readability and aesthetic appeal. Small adjustments can make a big difference in how text is perceived.</p>
+        </div>
+        
+        <div class="typography-controls">
+          <!-- Font Weight Controls -->
+          <div class="control-group">
+            <h3 class="control-title">Font Weight</h3>
+            <div class="control-row">
+              <label for="heading-weight">Heading:</label>
+              <input type="range" id="heading-weight" min="100" max="900" step="100" value="700">
+              <span class="value-display" id="heading-weight-value">700</span>
+            </div>
+            <div class="control-row">
+              <label for="body-weight">Body:</label>
+              <input type="range" id="body-weight" min="100" max="900" step="100" value="400">
+              <span class="value-display" id="body-weight-value">400</span>
+            </div>
+            <div class="info-bubble">
+              Font weight controls the thickness of the letterforms. Light weights (100-300) work well for large text, while medium weights (400-500) are ideal for body text. Bold weights (600-900) create emphasis.
+            </div>
+          </div>
+          
+          <!-- Letter Spacing Controls -->
+          <div class="control-group">
+            <h3 class="control-title">Letter Spacing</h3>
+            <div class="control-row">
+              <label for="heading-letter-spacing">Heading:</label>
+              <input type="range" id="heading-letter-spacing" min="-0.05" max="0.15" step="0.01" value="0">
+              <span class="value-display" id="heading-letter-spacing-value">0em</span>
+            </div>
+            <div class="control-row">
+              <label for="body-letter-spacing">Body:</label>
+              <input type="range" id="body-letter-spacing" min="-0.05" max="0.15" step="0.01" value="0">
+              <span class="value-display" id="body-letter-spacing-value">0em</span>
+            </div>
+            <div class="info-bubble">
+              Letter spacing (tracking) is the space between characters. Positive values increase spacing, making text feel more open, while negative values tighten text. Display and all-caps text often benefit from increased letter spacing.
+            </div>
+          </div>
+          
+          <!-- Word Spacing Controls -->
+          <div class="control-group">
+            <h3 class="control-title">Word Spacing</h3>
+            <div class="control-row">
+              <label for="heading-word-spacing">Heading:</label>
+              <input type="range" id="heading-word-spacing" min="0" max="2" step="0.1" value="0">
+              <span class="value-display" id="heading-word-spacing-value">0em</span>
+            </div>
+            <div class="control-row">
+              <label for="body-word-spacing">Body:</label>
+              <input type="range" id="body-word-spacing" min="0" max="2" step="0.1" value="0">
+              <span class="value-display" id="body-word-spacing-value">0em</span>
+            </div>
+            <div class="info-bubble">
+              Word spacing controls the space between words. Increased word spacing can improve readability, especially for dense text, but excessive spacing can disrupt the flow of reading.
+            </div>
+          </div>
+          
+          <!-- Line Height Controls -->
+          <div class="control-group">
+            <h3 class="control-title">Line Height</h3>
+            <div class="control-row">
+              <label for="heading-line-height">Heading:</label>
+              <input type="range" id="heading-line-height" min="0.8" max="2" step="0.1" value="1.2">
+              <span class="value-display" id="heading-line-height-value">1.2</span>
+            </div>
+            <div class="control-row">
+              <label for="body-line-height">Body:</label>
+              <input type="range" id="body-line-height" min="1" max="2" step="0.1" value="1.6">
+              <span class="value-display" id="body-line-height-value">1.6</span>
+            </div>
+            <div class="info-bubble">
+              Line height (leading) is the vertical space between lines of text. Body text typically benefits from line heights of 1.5-1.6 for optimal readability, while headings often work well with tighter line heights (1.1-1.3).
+            </div>
+          </div>
+          
+          <!-- Font Size Controls -->
+          <div class="control-group">
+            <h3 class="control-title">Font Size</h3>
+            <div class="control-row">
+              <label for="heading-size">Heading:</label>
+              <input type="range" id="heading-size" min="1.5" max="4" step="0.1" value="2.5">
+              <span class="value-display" id="heading-size-value">2.5rem</span>
+            </div>
+            <div class="control-row">
+              <label for="body-size">Body:</label>
+              <input type="range" id="body-size" min="0.8" max="1.5" step="0.05" value="1.125">
+              <span class="value-display" id="body-size-value">1.125rem</span>
+            </div>
+            <div class="info-bubble">
+              Font size affects both readability and visual hierarchy. Body text typically works best between 16-18px (1-1.125rem), while headings should be substantially larger to create clear hierarchy.
+            </div>
+          </div>
+          
+          <!-- Text Transform Controls -->
+          <div class="control-group">
+            <h3 class="control-title">Text Transform</h3>
+            <div class="control-row transform-controls">
+              <label>Heading:</label>
+              <select id="heading-transform" class="transform-select">
+                <option value="none">None</option>
+                <option value="uppercase">UPPERCASE</option>
+                <option value="lowercase">lowercase</option>
+                <option value="capitalize">Capitalize</option>
+              </select>
+            </div>
+            <div class="control-row transform-controls">
+              <label>Body:</label>
+              <select id="body-transform" class="transform-select">
+                <option value="none">None</option>
+                <option value="uppercase">UPPERCASE</option>
+                <option value="lowercase">lowercase</option>
+                <option value="capitalize">Capitalize</option>
+              </select>
+            </div>
+            <div class="info-bubble">
+              Text transforms alter the capitalization of text. Uppercase can create emphasis but can be harder to read in long passages. Sentence case and title case are typically most readable for body text.
+            </div>
+          </div>
+          
+          <!-- Text Alignment Controls -->
+          <div class="control-group">
+            <h3 class="control-title">Text Alignment</h3>
+            <div class="control-row alignment-controls">
+              <label>Preview:</label>
+              <div class="alignment-buttons">
+                <button class="align-btn active" data-align="left" title="Align Left">
+                  ≡
+                </button>
+                <button class="align-btn" data-align="center" title="Align Center">
+                  ≡
+                </button>
+                <button class="align-btn" data-align="right" title="Align Right">
+                  ≡
+                </button>
+                <button class="align-btn" data-align="justify" title="Justify">
+                  ≡
+                </button>
+              </div>
+            </div>
+            <div class="info-bubble">
+              Text alignment affects readability and aesthetic. Left-aligned text (ragged right) is most readable for longer content. Justified text creates clean edges but can create uneven spacing. Center alignment works for short, decorative text.
+            </div>
+          </div>
+        </div>
+        
+        <button class="reset-controls" id="reset-typography">Reset to Defaults</button>
+      </section>
+      
+      <!-- Tool 3: Typography Info -->
+      <section id="typography-info" class="tool-section">
+        <h2 class="section-title">Typography Tips & Resources</h2>
+        
+        <div class="info-cards">
+          <div class="info-card">
+            <h3>Anatomy of Typography</h3>
+            <p>Understanding typographic terminology helps in making better design decisions:</p>
+            <ul>
+              <li><strong>Baseline:</strong> The invisible line where characters sit</li>
+              <li><strong>X-height:</strong> Height of lowercase letters</li>
+              <li><strong>Cap height:</strong> Height of capital letters</li>
+              <li><strong>Ascenders:</strong> Parts of letters that extend above the x-height</li>
+              <li><strong>Descenders:</strong> Parts of letters that extend below the baseline</li>
+              <li><strong>Kerning:</strong> Adjustment of space between specific character pairs</li>
+            </ul>
+          </div>
+          
+          <div class="info-card">
+            <h3>Font Classification</h3>
+            <p>Fonts generally fall into these categories:</p>
+            <ul>
+              <li><strong>Serif:</strong> Have small lines at the ends of characters (e.g., Times New Roman). Good for traditional, authoritative content.</li>
+              <li><strong>Sans-serif:</strong> No decorative lines (e.g., Helvetica). Clean, modern appearance.</li>
+              <li><strong>Display:</strong> Decorative fonts designed for headlines and short text. Not suitable for body text.</li>
+              <li><strong>Monospace:</strong> Each character occupies the same width. Used for code and technical content.</li>
+              <li><strong>Script:</strong> Mimics handwriting or calligraphy. Best for decorative purposes.</li>
+            </ul>
+          </div>
+          
+          <div class="info-card">
+            <h3>Typography Best Practices</h3>
+            <ul>
+              <li>Limit your design to 2-3 font families for consistency</li>
+              <li>Create clear contrast between heading and body text</li>
+              <li>Ensure sufficient line height for comfortable reading</li>
+              <li>Maintain line lengths of 45-75 characters for optimal readability</li>
+              <li>Use proper hierarchy to guide the reader's attention</li>
+              <li>Consider the emotional character of fonts when selecting them</li>
+              <li>Test typography at different screen sizes</li>
+            </ul>
+          </div>
+          
+          <div class="info-card">
+            <h3>Accessibility Considerations</h3>
+            <ul>
+              <li>Maintain sufficient contrast between text and background</li>
+              <li>Use relative units (em, rem) instead of absolute units (px)</li>
+              <li>Avoid using very thin font weights for body text</li>
+              <li>Ensure line height is at least 1.5 for body text</li>
+              <li>Body text should be at least 16px (1rem)</li>
+              <li>Avoid justified text which can create uneven word spacing</li>
+              <li>Don't use all caps for long sections of text</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Preview Area (Shared between tools) -->
+      <div class="preview" id="preview">
+        <h1 class="preview-heading">Typography is what language looks like.</h1>
+        <p class="preview-body">
+          Good typography establishes a visual hierarchy for meaning by
+          contrasting styles and sizes. A great font combination creates harmony
+          between elements while ensuring readability and appropriate emphasis.
+        </p>
+      </div>
+
+      <div class="keyboard-shortcuts">
+        Keyboard shortcuts: <span class="shortcut">S</span> shuffle both fonts,
+        <span class="shortcut">H</span> shuffle heading font,
+        <span class="shortcut">B</span> shuffle body font,
+        <span class="shortcut">R</span> reset typography controls
+      </div>
+
+      <div id="status" class="status"></div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="js/fontpair.js"></script>
+  </body>
+</html>
